@@ -1,10 +1,10 @@
 # Other Tools Integration
 
-9Router is compatible with any tool that supports the OpenAI API format. This guide covers generic integration patterns for various tools and custom applications.
+0Router is compatible with any tool that supports the OpenAI API format. This guide covers generic integration patterns for various tools and custom applications.
 
 ## Overview
 
-9Router provides an OpenAI-compatible API endpoint that works with:
+0Router provides an OpenAI-compatible API endpoint that works with:
 - Custom scripts and applications
 - API clients and testing tools
 - CLI tools and utilities
@@ -13,20 +13,20 @@
 
 ## Generic Setup Pattern
 
-Any OpenAI-compatible tool can connect to 9Router using these settings:
+Any OpenAI-compatible tool can connect to 0Router using these settings:
 
-**Local 9Router:**
+**Local 0Router:**
 ```
 Base URL: http://localhost:20128/v1
 API Key: your-api-key-from-dashboard
-Model: any 9Router model (cc/*, cx/*, glm/*, etc.)
+Model: any 0Router model (cc/*, cx/*, glm/*, etc.)
 ```
 
-**Cloud 9Router:**
+**Cloud 0Router:**
 ```
-Base URL: https://9router.com/v1
+Base URL: https://0Router.com/v1
 API Key: your-api-key-from-dashboard
-Model: any 9Router model (cc/*, cx/*, glm/*, etc.)
+Model: any 0Router model (cc/*, cx/*, glm/*, etc.)
 ```
 
 ## Available Models
@@ -318,9 +318,9 @@ def chat_with_retry(prompt, max_retries=3):
 
 ### Connection Issues
 
-**Problem:** Cannot connect to 9Router
+**Problem:** Cannot connect to 0Router
 ```bash
-# Check if 9Router is running
+# Check if 0Router is running
 curl http://localhost:20128/health
 
 # Expected response:
@@ -328,7 +328,7 @@ curl http://localhost:20128/health
 ```
 
 **Solution:**
-- Verify 9Router is running
+- Verify 0Router is running
 - Check port 20128 is not blocked
 - Ensure correct base URL (include `/v1`)
 
@@ -366,7 +366,7 @@ Error: Request timed out after 30s
 **Solution:**
 - Increase timeout in client configuration
 - Use faster models for time-sensitive tasks
-- Check network connection to 9Router
+- Check network connection to 0Router
 
 ### Rate Limiting
 

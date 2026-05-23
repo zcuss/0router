@@ -1,4 +1,4 @@
-# 9Router - FREE AI Router & Token Saver
+# 0Router - FREE AI Router & Token Saver
 
 **Never stop coding. Save 20-40% tokens with RTK + auto-fallback to FREE & cheap AI models.**
 
@@ -12,11 +12,11 @@
 
 <a href="https://trendshift.io/repositories/22628" target="_blank"><img src="https://trendshift.io/api/badge/repositories/22628" alt="zcuss%2F0router | Trendshift" style="width: 250px; height: 55px;" width="250" height="55"/></a>
 
-[🌐 Website](https://9router.com) • [📖 Full Docs](https://github.com/zcuss/0router)
+[🌐 Website](https://0Router.com) • [📖 Full Docs](https://github.com/zcuss/0router)
 
 ---
 
-## 🤔 Why 9Router?
+## 🤔 Why 0Router?
 
 **Stop wasting money, tokens and hitting limits:**
 
@@ -25,7 +25,7 @@
 - ❌ Tool outputs (git diff, grep, ls...) burn tokens fast
 - ❌ Expensive APIs ($20-50/month per provider)
 
-**9Router solves this:**
+**0Router solves this:**
 
 - ✅ **RTK Token Saver** - Auto-compress tool_result, save 20-40% tokens
 - ✅ **Maximize subscriptions** - Track quota, use every bit before reset
@@ -79,11 +79,11 @@ That's it! Start coding with FREE AI models.
 ## 🚀 CLI Options
 
 ```bash
-9router                    # Start with default settings
-9router --port 8080        # Custom port
-9router --no-browser       # Don't open browser
-9router --skip-update      # Skip auto-update check
-9router --help             # Show all options
+0Router                    # Start with default settings
+0Router --port 8080        # Custom port
+0Router --no-browser       # Don't open browser
+0Router --skip-update      # Skip auto-update check
+0Router --help             # Show all options
 ```
 
 **Dashboard**: `http://localhost:20128/dashboard`
@@ -100,9 +100,9 @@ Any tool supporting OpenAI/Claude-compatible API works.
 
 ## 💾 Data Location
 
-- **macOS/Linux**: `~/.9router/db/data.sqlite`
-- **Windows**: `%APPDATA%/9router/db/data.sqlite`
-- **Docker**: `/app/data/db/data.sqlite` (mount `$HOME/.9router` to persist)
+- **macOS/Linux**: `~/.0Router/db/data.sqlite`
+- **Windows**: `%APPDATA%/0Router/db/data.sqlite`
+- **Docker**: `/app/data/db/data.sqlite` (mount `$HOME/.0Router` to persist)
 
 ---
 
@@ -112,7 +112,7 @@ Full docs, advanced setup, video tutorials & development guide:
 
 - **GitHub**: https://github.com/zcuss/0router
 - **Full README**: https://github.com/zcuss/0router/blob/main/README.md
-- **Website**: https://9router.com
+- **Website**: https://0Router.com
 
 ---
 

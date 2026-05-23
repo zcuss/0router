@@ -1,4 +1,4 @@
-name: Deploy GitBook to 9router.github.io
+name: Deploy GitBook to 0Router.github.io
 
 on:
   workflow_dispatch:
@@ -32,11 +32,11 @@ jobs:
       - name: Add .nojekyll
         run: touch out/.nojekyll
 
-      - name: Deploy to 9router.github.io
+      - name: Deploy to 0Router.github.io
         uses: peaceiris/actions-gh-pages@v4
         with:
           deploy_key: ${{ secrets.GH_PAGES_DEPLOY_KEY }}
-          external_repository: 9router/9router.github.io
+          external_repository: 0Router/0Router.github.io
           publish_branch: main
           publish_dir: gitbook/out
           force_orphan: true
