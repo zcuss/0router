@@ -1,11 +1,6 @@
 name: Deploy GitBook to 9router.github.io
 
 on:
-  push:
-    branches: [main, master]
-    paths:
-      - "gitbook/**"
-      - ".github/workflows/gitbook-pages.yml"
   workflow_dispatch:
 
 concurrency:

@@ -18,8 +18,11 @@ jobs:
           node-version: 20
           registry-url: https://registry.npmjs.org/
 
-      - name: Install deps
+      - name: Install app deps
         run: npm ci
+
+      - name: Install CLI deps
+        run: npm install
         working-directory: cli
 
       - name: Build CLI

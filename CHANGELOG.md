@@ -1,3 +1,9 @@
+# v0.4.64 (2026-05-23)
+
+## Fixes
+- Release: trigger npmjs publishing only from version tags; Docker and GitBook workflows are manual-only
+- NPM CI: install CLI dependencies with `npm install` because the CLI package has no lockfile
+
 # v0.4.63 (2026-05-23)
 
 ## Fixes
