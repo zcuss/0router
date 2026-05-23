@@ -117,7 +117,31 @@ export async function POST(request) {
     if (!apiKey && provider !== "ollama-local") {
       return NextResponse.json({ error: `${isWebCookieProvider ? "Cookie value" : "API Key"} is required` }, { status: 400 });
     }
-    const connectionName = name || displayName || AI_PROVIDERS[provider]?.name;
+
+    const isCodexAccessToken = provider === "codex" && typeof apiKey === "string" && apiKey.trim().length > 0;
+    let codexEmail = null;
+    let codexAccountId = null;
+    let codexPlanType = null;
+
+    if (isCodexAccessToken) {
+      try {
+        const token = apiKey.trim();
+        const payloadPart = token.split(".")[1] || "";
+        const b64 = payloadPart.replace(/-/g, "+").replace(/_/g, "/");
+        const padded = b64 + "=".repeat((4 - (b64.length % 4)) % 4);
+        const payload = JSON.parse(Buffer.from(padded, "base64").toString("utf8"));
+        codexEmail = payload?.email || null;
+        codexAccountId = payload?.account_id || null;
+        codexPlanType = payload?.plan_type || null;
+      } catch {
+        codexEmail = null;
+      }
+    }
+
+    const connectionName = isCodexAccessToken
+      ? (codexEmail || "Production")
+      : (name || displayName || AI_PROVIDERS[provider]?.name);
+
     if (!connectionName) {
       return NextResponse.json({ error: "Name is required" }, { status: 400 });
     }
@@ -164,6 +188,12 @@ export async function POST(request) {
       connectionNoProxy: proxyConfig.connectionNoProxy,
     };
 
+    if (isCodexAccessToken) {
+      mergedProviderSpecificData.authMethod = "access_token";
+      if (codexAccountId) mergedProviderSpecificData.chatgptAccountId = codexAccountId;
+      if (codexPlanType) mergedProviderSpecificData.chatgptPlanType = codexPlanType;
+    }
+
     if (proxyPoolId !== null) {
       mergedProviderSpecificData.proxyPoolId = proxyPoolId;
     }
@@ -176,7 +206,9 @@ export async function POST(request) {
       provider,
       authType: resolvedAuthType,
       name: connectionName,
-      apiKey: apiKey || "",
+      email: isCodexAccessToken ? codexEmail : null,
+      apiKey: isCodexAccessToken ? "" : (apiKey || ""),
+      accessToken: isCodexAccessToken ? apiKey.trim() : undefined,
       priority: priority || 1,
       globalPriority: globalPriority || null,
       defaultModel: defaultModel || null,

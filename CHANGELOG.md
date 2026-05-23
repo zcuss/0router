@@ -1,3 +1,9 @@
+# v0.4.70 (2026-05-23)
+
+## Fixes
+- Codex manual add: save token as `access_token` credential flow (not API key path)
+- Codex connection naming: automatically use token email as connection/production name, fallback to `Production`
+
 # v0.4.69 (2026-05-23)
 
 ## Fixes
