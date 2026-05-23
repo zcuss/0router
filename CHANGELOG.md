@@ -1,3 +1,9 @@
+# v0.4.63 (2026-05-23)
+
+## Fixes
+- Docker CI: publish only to `ghcr.io/zcuss/0router` so the workflow no longer fails when Docker Hub credentials are not configured
+- Docker docs: replace remaining `decolua/9router` image references with `0router`/`ghcr.io/zcuss/0router`
+
 # v0.4.62 (2026-05-23)
 
 ## Features

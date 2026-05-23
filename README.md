@@ -9,7 +9,7 @@
   
   [![npm](https://img.shields.io/npm/v/0router.svg)](https://www.npmjs.com/package/0router)
   [![Downloads](https://img.shields.io/npm/dm/0router.svg)](https://www.npmjs.com/package/0router)
-  [![Docker Pulls](https://img.shields.io/docker/pulls/decolua/9router.svg?logo=docker&label=Docker%20pulls)](https://hub.docker.com/r/decolua/9router)
+  [![Docker Pulls](https://img.shields.io/docker/pulls/zcuss/0router.svg?logo=docker&label=Docker%20pulls)](https://hub.docker.com/r/zcuss/0router)
   [![GHCR](https://img.shields.io/badge/GHCR-zcuss%2F0router-blue?logo=github)](https://github.com/zcuss/0router/pkgs/container/0router)
   [![License](https://img.shields.io/npm/l/0router.svg)](https://github.com/zcuss/0router/blob/main/LICENSE)
 
@@ -1043,26 +1043,25 @@ npm run start
 
 # Or use PM2
 npm install -g pm2
-pm2 start npm --name 9router -- start
+pm2 start npm --name 0router -- start
 pm2 save
 pm2 startup
 ```
 
 ### Docker
 
-Published images (multi-platform `linux/amd64` + `linux/arm64`):
-- Docker Hub: [`decolua/9router`](https://hub.docker.com/r/decolua/9router)
+Published image (multi-platform `linux/amd64` + `linux/arm64`):
 - GHCR: [`ghcr.io/zcuss/0router`](https://github.com/zcuss/0router/pkgs/container/0router)
 
 **Quick start (use published image):**
 
 ```bash
 docker run -d \
-  --name 9router \
+  --name 0router \
   -p 20128:20128 \
-  -v "$HOME/.9router:/app/data" \
+  -v "$HOME/.0router:/app/data" \
   -e DATA_DIR=/app/data \
-  decolua/9router:latest
+  ghcr.io/zcuss/0router:latest
 ```
 
 → Open http://localhost:20128
@@ -1072,9 +1071,9 @@ docker run -d \
 ```bash
 git clone https://github.com/zcuss/0router.git
 cd 0router
-docker build -t 9router .
-docker run -d --name 9router -p 20128:20128 \
-  -v "$HOME/.9router:/app/data" -e DATA_DIR=/app/data 9router
+docker build -t 0router .
+docker run -d --name 0router -p 20128:20128 \
+  -v "$HOME/.0router:/app/data" -e DATA_DIR=/app/data 0router
 ```
 
 **Container defaults:**
@@ -1084,13 +1083,13 @@ docker run -d --name 9router -p 20128:20128 \
 **Useful commands:**
 
 ```bash
-docker logs -f 9router
-docker restart 9router
-docker stop 9router && docker rm 9router
-docker pull decolua/9router:latest   # update to latest
+docker logs -f 0router
+docker restart 0router
+docker stop 0router && docker rm 0router
+docker pull ghcr.io/zcuss/0router:latest   # update to latest
 ```
 
-**Data persistence:** `$HOME/.9router/db/data.sqlite` on host ↔ `/app/data/db/data.sqlite` in container.
+**Data persistence:** `$HOME/.0router/db/data.sqlite` on host ↔ `/app/data/db/data.sqlite` in container.
 
 ### Environment Variables
 
@@ -1124,7 +1123,7 @@ Notes:
 - Main app state: `${DATA_DIR}/db/data.sqlite` (SQLite — providers, combos, aliases, keys, settings, usage history)
 - Auto backups: `${DATA_DIR}/db/backups/`
 - Optional request/translator logs: `<repo>/logs/...` when `ENABLE_REQUEST_LOGS=true`
-- Both `${DATA_DIR}` and `~/.9router` resolve to the same location in a Docker container — the symlink `/root/.9router -> /app/data` is created at build time.
+- Both `${DATA_DIR}` and `~/.0router` resolve to the same location in a Docker container — the symlink `/root/.0router -> /app/data` is created at build time. Legacy `/root/.9router` is also linked for backward compatibility.
 
 </details>
 

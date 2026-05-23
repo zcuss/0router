@@ -6,7 +6,7 @@
 
 [![npm](https://img.shields.io/npm/v/0router.svg)](https://www.npmjs.com/package/0router)
 [![Downloads](https://img.shields.io/npm/dm/0router.svg)](https://www.npmjs.com/package/0router)
-[![Docker Pulls](https://img.shields.io/docker/pulls/decolua/9router.svg?logo=docker&label=Docker%20pulls)](https://hub.docker.com/r/decolua/9router)
+[![Docker Pulls](https://img.shields.io/docker/pulls/zcuss/0router.svg?logo=docker&label=Docker%20pulls)](https://hub.docker.com/r/zcuss/0router)
 [![GHCR](https://img.shields.io/badge/GHCR-zcuss%2F0router-blue?logo=github)](https://github.com/zcuss/0router/pkgs/container/0router)
 [![License](https://img.shields.io/npm/l/0router.svg)](https://github.com/zcuss/0router/blob/main/LICENSE)
 
@@ -50,12 +50,12 @@ npx 0router
 **Option 2 — Docker (server/VPS):**
 
 ```bash
-docker run -d --name 9router -p 20128:20128 \
-  -v "$HOME/.9router:/app/data" -e DATA_DIR=/app/data \
-  decolua/9router:latest
+docker run -d --name 0router -p 20128:20128 \
+  -v "$HOME/.0router:/app/data" -e DATA_DIR=/app/data \
+  zcuss/0router:latest
 ```
 
-Published images: [Docker Hub](https://hub.docker.com/r/decolua/9router) • [GHCR](https://github.com/zcuss/0router/pkgs/container/0router) (multi-platform amd64/arm64).
+Published image: [GHCR](https://github.com/zcuss/0router/pkgs/container/0router) (multi-platform amd64/arm64).
 
 🎉 Dashboard opens at `http://localhost:20128`
 
