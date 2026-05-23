@@ -1,3 +1,8 @@
+# v0.4.68 (2026-05-23)
+
+## Fixes
+- NPM CI: write `secrets.NPM_TOKEN` directly to `~/.npmrc` instead of using `npm config set`
+
 # v0.4.67 (2026-05-23)
 
 ## Fixes

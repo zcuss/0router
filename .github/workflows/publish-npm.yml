@@ -31,8 +31,7 @@ jobs:
 
       - name: Configure npm auth
         run: |
-          npm config set registry https://registry.npmjs.org/
-          npm config set //registry.npmjs.org/:_authToken "$NPM_TOKEN"
+          printf "registry=https://registry.npmjs.org/\n//registry.npmjs.org/:_authToken=%s\nalways-auth=true\n" "$NPM_TOKEN" > ~/.npmrc
           npm whoami --registry https://registry.npmjs.org/
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

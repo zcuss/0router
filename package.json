@@ -1,6 +1,6 @@
 {
   "name": "0router-app",
-  "version": "0.4.67",
+  "version": "0.4.68",
   "description": "0Router web dashboard",
   "private": true,
   "scripts": {
