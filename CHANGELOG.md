@@ -1,3 +1,8 @@
+# v0.4.67 (2026-05-23)
+
+## Fixes
+- NPM CI: configure npm registry auth explicitly from `secrets.NPM_TOKEN` before publishing
+
 # v0.4.66 (2026-05-23)
 
 ## Fixes
