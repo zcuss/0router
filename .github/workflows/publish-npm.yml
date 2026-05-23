@@ -19,7 +19,7 @@ jobs:
           registry-url: https://registry.npmjs.org/
 
       - name: Install app deps
-        run: npm ci
+        run: npm install
 
       - name: Install CLI deps
         run: npm install

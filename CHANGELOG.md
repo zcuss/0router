@@ -1,3 +1,8 @@
+# v0.4.66 (2026-05-23)
+
+## Fixes
+- NPM CI: use `npm install` for root dependencies because no root lockfile is committed
+
 # v0.4.65 (2026-05-23)
 
 ## Fixes
