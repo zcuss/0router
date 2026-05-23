@@ -1,6 +1,6 @@
 {
   "name": "0router",
-  "version": "0.4.64",
+  "version": "0.4.65",
   "description": "0Router CLI - Start and manage 0Router server",
   "bin": {
     "0router": "./cli.js"

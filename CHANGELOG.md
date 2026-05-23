@@ -1,3 +1,8 @@
+# v0.4.65 (2026-05-23)
+
+## Fixes
+- CLI build: locate nested Next.js standalone output reliably before npmjs publish
+
 # v0.4.64 (2026-05-23)
 
 ## Fixes
