@@ -188,16 +188,24 @@ export async function POST(request, { params }) {
     if (action === "exchange") {
       const { code, redirectUri, codeVerifier, state, meta } = body;
 
-      // Detect if "code" is actually a raw JWT access token (starts with eyJ)
-      if (code && code.startsWith("eyJ") && code.includes(".")) {
-        const { extractCodexAccountInfo } = await import("@/lib/oauth/providers");
-        const info = extractCodexAccountInfo(code);
+      // Codex callback mode: treat callback `code` as access token directly
+      // Example: http://localhost:20128/callback?code=accesstoken
+      if (provider === "codex" && typeof code === "string" && code.trim()) {
+        const rawToken = code.trim();
+        let info = {};
 
-        // Also decode JWT directly for ChatGPT website tokens which use
-        // top-level account_id/plan_type instead of nested openai auth claims
+        try {
+          const { extractCodexAccountInfo } = await import("@/lib/oauth/providers");
+          info = extractCodexAccountInfo(rawToken) || {};
+        } catch {
+          info = {};
+        }
+
+        // Best-effort direct JWT decode (only works for JWT-shaped tokens)
         let directPayload = {};
         try {
-          const b64 = code.split(".")[1].replace(/-/g, "+").replace(/_/g, "/");
+          const payloadPart = rawToken.split(".")[1] || "";
+          const b64 = payloadPart.replace(/-/g, "+").replace(/_/g, "/");
           const padded = b64 + "=".repeat((4 - b64.length % 4) % 4);
           directPayload = JSON.parse(Buffer.from(padded, "base64").toString("utf8"));
         } catch {}
@@ -213,8 +221,9 @@ export async function POST(request, { params }) {
         const connection = await createProviderConnection({
           provider,
           authType: "access_token",
-          accessToken: code,
+          accessToken: rawToken,
           email: email || null,
+          name: email || "Production",
           providerSpecificData,
           testStatus: "active",
         });

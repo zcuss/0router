@@ -1,3 +1,9 @@
+# v0.4.71 (2026-05-26)
+
+## Fixes
+- Codex OAuth callback flow: treat `code` from `http://localhost:20128/callback?code=...` as direct Codex access token
+- Codex callback connection naming: use token email when available, fallback to `Production`
+
 # v0.4.70 (2026-05-23)
 
 ## Fixes
