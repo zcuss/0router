@@ -1,3 +1,9 @@
+# v0.4.72 (2026-05-26)
+
+## Fixes
+- Codex access token now uses OAuth callback exchange flow (`/api/oauth/codex/exchange`) with callback-style `code=<accesstoken>`
+- Providers dashboard Codex add flow now routes token submission to OAuth exchange path instead of API key endpoint
+
 # v0.4.70 (2026-05-23)
 
 ## Fixes
