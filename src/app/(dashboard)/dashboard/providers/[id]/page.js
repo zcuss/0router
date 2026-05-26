@@ -532,10 +532,20 @@ export default function ProviderDetailPage() {
   const handleSaveApiKey = async (formData) => {
     setAddConnectionError("");
     try {
-      const res = await fetch("/api/providers", {
+      const isCodexAccessTokenFlow = providerId === "codex" && typeof formData?.apiKey === "string" && formData.apiKey.trim();
+
+      const endpoint = isCodexAccessTokenFlow
+        ? `/api/oauth/${providerId}/exchange`
+        : "/api/providers";
+
+      const payload = isCodexAccessTokenFlow
+        ? { code: formData.apiKey.trim() }
+        : { provider: providerId, ...formData };
+
+      const res = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ provider: providerId, ...formData }),
+        body: JSON.stringify(payload),
       });
 
       let data = null;
